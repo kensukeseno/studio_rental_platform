@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Dashboard</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/owner-dashboard.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="/">DOORSY</a>
+            </div>
+
+            <div class="nav-right">
+                <div class="dropdown">
+                    <button class="dropdown-btn">Menu <i class="fa fa-chevron-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="#" id="open-profile">Profile Info</a>
+                        <a href="#" id="logout-btn">Logout</a>
+                    </div>
+                </div>
+        </nav>
+    </header>
+
+    <!--  Profile Info Modal -->
+    <div id="profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="profile-modal">&times;</span>
+            <h2>Profile Info</h2>
+            <div id="profile-info-container">
+                <div id="profile-info">
+                    <!-- Profile info will be dynamically populated -->
+                </div>
+                <button id="edit-profile-btn">Edit Profile</button>
+            </div>
+        </div>
+    </div>
+
+    <!--  Edit Profile Modal -->
+    <div id="edit-profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="edit-profile-modal">&times;</span>
+            <h2>Edit Your Profile</h2>
+            <form id="edit-profile-form">
+                <label for="edit-name">*Full Name:</label>
+                <input type="text" id="edit-name" placeholder="Enter your full name" required>
+
+                <label for="edit-email">Email Address:</label>
+                <input type="email" id="edit-email" placeholder="Enter your email address" required>
+
+                <label for="edit-phone">*Phone Number <span>(Format: 123-456-7890)</span>:</label>
+                <input type="tel" id="edit-phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    placeholder="Enter your phone number" required>
+
+                <label for="edit-photo">Profile Photo:</label>
+                <input type="file" id="edit-photo" accept="image/*">
+
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="add-listing-form">
+        <h2>Add Studio Listing</h2>
+        <form id="listing-form">
+            <input type="text" id="studio-name" placeholder="Studio Name" required>
+            <input type="text" id="studio-address" placeholder="Address" required>
+            <input type="number" id="studio-area" placeholder="Area (m²)" min="0" required>
+            <input type="number" id="studio-capacity" placeholder="Capacity" min="0" required>
+            <select name="type" id="studio-type" required>
+                <option value="" disabled selected hidden>Select a Studio Type</option>
+                <option value="art-studio">Art studio</option>
+                <option value="recording-studio">Recording studio</option>
+                <option value="dance-studio">Dance studio</option>
+                <option value="rehearsal-space">Rehearsal space</option>
+            </select>
+            <div>
+                <p>Parking Available: <input type="checkbox" id="studio-parking"></p>
+                <p>Public Transport Nearby: <input type="checkbox" id="studio-public-transport"></p>
+                <p>Available for Rent: <input type="checkbox" id="studio-available"></p>
+            </div>
+            <select name="term" id="studio-rental-term" required>
+                <option value="" disabled selected hidden>Select a Rental Term</option>
+                <option value="hourly">Hourly</option>
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly</option>
+                <option value="monthly">Monthly</option>
+            </select>
+            <input type="number" id="studio-price" placeholder="Price per Term ($)" min="0" required>
+            <p>Upload up to 4 photos: <input type="file" id="studio-photo" multiple></p>
+            <button id="add-listing-btn" type="submit">Add Listing</button>
+        </form>
+    </div>
+
+    <div id="existing-listings">
+        <h2>Existing Listings</h2>
+        <div id="owner-studio-listings">
+            <!-- Studio listings will appear here -->
+        </div>
+    </div>
+
+    <!-- Modal: Edit a listing  -->
+    <div id="listing-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-modal" class="close-btn">&times;</span>
+            <h2>Edit Studio Listing</h2>
+            <form id="edit-listing-form">
+                <div>
+                    <div>
+                        <label for="edit-studio-name">*Studio Name:</label>
+                        <input type="text" id="edit-studio-name" placeholder="Studio Name" required>
+                    </div>
+                    <div>
+                        <label for="edit-studio-address">*Address:</label>
+                        <input type="text" id="edit-studio-address" placeholder="Address" required>
+                    </div>
+                    <div>
+                        <label for="edit-studio-area">*Area (m²):</label>
+                        <input type="number" id="edit-studio-area" placeholder="Area (m²)" min="0" required>
+                    </div>
+                    <div>
+                        <label for="edit-studio-capacity">*Capacity:</label>
+                        <input type="number" id="edit-studio-capacity" placeholder="Capacity" min="0" required>
+                    </div>
+                    <select name="type" id="edit-studio-type" required>
+                        <option value="" disabled selected hidden>Select a Studio Type</option>
+                        <option value="art-studio">Art studio</option>
+                        <option value="recording-studio">Recording studio</option>
+                        <option value="dance-studio">Dance studio</option>
+                        <option value="rehearsal-space">Rehearsal space</option>
+                    </select>
+                    <div>
+                        <p>Parking Available: <input type="checkbox" id="edit-studio-parking"></p>
+                        <p>Public Transport Nearby: <input type="checkbox" id="edit-studio-public-transport"></p>
+                        <p>Available for Rent: <input type="checkbox" id="edit-studio-available"></p>
+                    </div>
+                </div>
+                <div>
+                    <select name="term" id="edit-studio-rental-term" required>
+                        <option value="" disabled selected hidden>Select a Rental Term</option>
+                        <option value="hourly">Hourly</option>
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                    </select>
+                    <div>
+                        <label for="edit-studio-price">*Price per Term ($):</label>
+                        <input type="number" id="edit-studio-price" placeholder="Price per Term" min="0" required>
+                    </div>
+                </div>
+                <div id="edit-studio-photo"></div>
+                <p>Uplaod up to 4 photos in total: <input type="file" id="upload-studio-photo" multiple></p>
+                <button id="list-save-change-btn" type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 DOORSY</p>
+    </footer>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/owner-dashboard.js"></script>
+</body>
+
+</html>

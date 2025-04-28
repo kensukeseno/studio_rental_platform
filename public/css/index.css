@@ -1,0 +1,287 @@
+body {
+  min-height: 100vh;
+  background-color: #c1d3fe; /* Fallback color */
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Background Wrapper */
+.background {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+
+/*  Content Container */
+.content-container {
+  text-align: center;
+  z-index: 1001; /* Above waves */
+}
+
+/*  DOORSY  */
+.header-container h1 {
+  font-size: 12rem;
+  font-family: CustomFont, sans-serif;
+  margin-bottom: 10px;
+  letter-spacing: 8px;
+  color: white;
+  text-transform: uppercase;
+}
+
+/*  Tagline */
+.header-container p {
+  font-size: 1.8rem;
+  font-family: "Courier New", Courier, monospace;
+  color: white;
+  font-style: italic;
+  margin-bottom: 40px;
+}
+
+/*  CTA Buttons */
+.cta-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.cta-button {
+  background-color: transparent;
+  border: 2px solid white;
+  padding: 12px 20px;
+  width: 250px;
+  font-size: 1.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  text-transform: uppercase;
+  text-align: center;
+  color: white;
+}
+
+.cta-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/*  Animated Background */
+/*source:https://alvarotrigo.com/blog/animated-backgrounds-css/ */
+section {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background: #3586ff;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+section .air {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url(https://1.bp.blogspot.com/-xQUc-TovqDk/XdxogmMqIRI/AAAAAAAACvI/AizpnE509UMGBcTiLJ58BC6iViPYGYQfQCLcBGAsYHQ/s1600/wave.png);
+  background-size: 1000px 100px;
+}
+/*source:https://alvarotrigo.com/blog/animated-backgrounds-css/ */
+section .air.air1 {
+  animation: wave 30s linear infinite;
+  z-index: 1000;
+  opacity: 1;
+  bottom: 0;
+}
+section .air.air2 {
+  animation: wave2 15s linear infinite;
+  z-index: 999;
+  opacity: 0.5;
+  bottom: 10px;
+}
+section .air.air3 {
+  animation: wave 30s linear infinite;
+  z-index: 998;
+  opacity: 0.2;
+  bottom: 15px;
+}
+section .air.air4 {
+  animation: wave2 5s linear infinite;
+  z-index: 997;
+  opacity: 0.7;
+  bottom: 20px;
+}
+
+@keyframes wave {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: 1000px;
+  }
+}
+@keyframes wave2 {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: -1000px;
+  }
+}
+
+/* MODAL DESIGN */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+/*  Modal Content */
+.modal-content {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(15px);
+  padding: 25px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/*  Close Button */
+.close {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 26px;
+  cursor: pointer;
+  color: white;
+}
+
+.close:hover {
+  color: #ff4444;
+}
+
+/*  Smooth Fade-in Effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*  Modal Heading */
+.modal-content h2 {
+  font-size: 1.8rem;
+  color: white;
+  margin-bottom: 8px;
+}
+
+/* Modal Form */
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.modal-content label {
+  color: white;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.modal-content input,
+.modal-content select {
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  text-align: center;
+}
+
+.modal-content input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/*  Modal Submit Button */
+.modal-content button {
+  background-color: #4a90e2;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.modal-content button:hover {
+  background-color: #357ab8;
+}
+
+/*  Responsive Adjustments */
+@media (max-width: 768px) {
+  .header-container h1 {
+    font-size: 4rem;
+    letter-spacing: 5px;
+  }
+  .header-container p {
+    font-size: 1.5rem;
+  }
+  .cta-button {
+    width: 200px;
+    font-size: 1rem;
+    padding: 10px 15px;
+  }
+  .modal-content {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container h1 {
+    font-size: 3rem;
+    letter-spacing: 3px;
+  }
+  .header-container p {
+    font-size: 1.3rem;
+  }
+  .cta-button {
+    width: 180px;
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+  .modal-content {
+    max-width: 320px;
+  }
+}

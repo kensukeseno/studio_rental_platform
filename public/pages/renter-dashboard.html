@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renter Dashboard</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/renter-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="/">DOORSY</a>
+            </div>
+
+            <div class="nav-right">
+                <!-- Search Bar -->
+                <input type="text" id="search-input" placeholder="Search name or address" class="search-input">
+                <div class="dropdown">
+                    <button class="dropdown-btn">Menu <i class="fa fa-chevron-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="#" id="open-profile">Profile Info</a>
+                        <a href="#" id="open-filter">Apply Filter</a>
+                        <a href="#" id="logout-btn">Logout</a>
+                    </div>
+                </div>
+        </nav>
+    </header>
+
+    <div class="listing">
+        <h2>Available Studio Listings</h2>
+        <div id="studio-list">
+            <!-- Studio listings will be dynamically populated here -->
+        </div>
+    </div>
+
+
+
+    <!--  Profile Info Modal -->
+    <div id="profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="profile-modal">&times;</span>
+            <h2>Profile Info</h2>
+            <div id="profile-info-container">
+                <div id="profile-info">
+                    <!-- Profile info will be dynamically populated -->
+                </div>
+                <button id="edit-profile-btn">Edit Profile</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Studios Modal -->
+    <div id="filter-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="filter-modal">&times;</span>
+            <h2>Apply Filter</h2>
+            <form id="filter-form">
+                <div class="filter-form-child">
+                    <label for="area-min">Min Area:</label>
+                    <input type="number" id="area-min" name="area-min" placeholder="Min area" min="0">
+                </div>
+
+                <div class="filter-form-child">
+                    <label for="area-max">Max Area:</label>
+                    <input type="number" id="area-max" name="area-max" placeholder="Max area" min="0">
+                </div>
+
+                <div class="filter-form-child">
+                    <label for="capacity-min">Min Capacity:</label>
+                    <input type="number" id="capacity-min" name="capacity-min" placeholder="Min capacity" min="0">
+                </div>
+
+                <div class="filter-form-child">
+                    <label for="capacity-max">Max Capacity:</label>
+                    <input type="number" id="capacity-max" name="capacity-max" placeholder="Max capacity" min="0">
+                </div>
+
+                <div class="filter-form-child">
+                    <label for="type">Studio Type:</label>
+                    <select id="type" name="type">
+                        <option value="">Any Type</option>
+                        <option value="art-studio">Art Studio</option>
+                        <option value="recording-studio">Recording Studio</option>
+                        <option value="dance-studio">Dance Studio</option>
+                        <option value="rehearsal-space">Rehearsal Space</option>
+
+                    </select>
+                </div>
+
+                <div>
+                    <p>Parking Available Only: <input type="checkbox" id="studio-parking"></p>
+                    <p>Public Transport Nearby Only: <input type="checkbox" id="studio-public-transport"></p>
+                </div>
+
+                <select name="term" id="studio-rental-term">
+                    <option value="">Select a Rental Term</option>
+                    <option value="hourly">Hourly</option>
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+
+                <div class="filter-form-child">
+                    <label for="price-min">Min Price:</label>
+                    <input type="number" id="price-min" name="price-min" placeholder="Min price" min="0" disabled>
+                </div>
+
+                <div class="filter-form-child">
+                    <label for="price-max">Max Price:</label>
+                    <input type="number" id="price-max" name="price-max" placeholder="Max price" min="0" disabled>
+                </div>
+
+                <button type="submit" id="apply-filter">Apply Filters</button>
+            </form>
+        </div>
+    </div>
+    <!--  Edit Profile Modal -->
+    <div id="edit-profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="edit-profile-modal">&times;</span>
+            <h2>Edit Your Profile</h2>
+            <form id="edit-profile-form">
+                <label for="edit-name">*Full Name:</label>
+                <input type="text" id="edit-name" placeholder="Enter your full name" required>
+
+                <label for="edit-email">Email Address:</label>
+                <input type="email" id="edit-email" placeholder="Enter your email address" required>
+
+                <label for="edit-phone">*Phone Number <span>(Format: 123-456-7890)</span>:</label>
+                <input type="tel" id="edit-phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    placeholder="Enter your phone number" required>
+
+                <label for="edit-photo">Profile Photo:</label>
+                <input type="file" id="edit-photo" accept="image/*">
+
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- modal container -->
+    <div id="listing-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-modal" class="close-btn">&times;</span>
+            <h2>Studio Details</h2>
+            <div id="listing-details">
+                <!-- Full details will be dynamically populated here -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 DOORSY</p>
+    </footer>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/renter-dashboard.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,185 @@
+/* Forms */
+#add-listing-form {
+  width: 48%;
+}
+
+@media (max-width: 1000px) {
+  #profile,
+  #add-listing-form {
+    width: 100%;
+  }
+}
+
+#listing-form {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+#listing-form input,
+#listing-form select {
+  width: 48%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+}
+
+/* Edit Listing Form */
+#edit-listing-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#edit-listing-form div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#edit-studio-photo div {
+  position: relative;
+  display: inline-block;
+}
+
+.garbage-bin {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+}
+
+/* listing grid, 5 per row */
+#owner-studio-listings {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 35px;
+  justify-content: center;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 100%;
+  padding-bottom: 60px;
+}
+
+/*  listing card */
+.owner-card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 350px;
+  border: 2px solid #ddd;
+  transition: box-shadow 0.3s ease-in-out;
+  height: 100%;
+}
+.owner-card-actions {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.owner-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-color: #4a90e2;
+}
+
+.owner-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #2b3d52;
+}
+
+.owner-card p {
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.owner-card-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.owner-card button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  margin-top: 5px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.owner-card button:hover {
+  background-color: #357ab8;
+}
+
+/*  Responsive Grid */
+@media (max-width: 1200px) {
+  #owner-studio-listings {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  #owner-studio-listings {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  #owner-studio-listings {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  #owner-studio-listings {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Search Bar */
+.search-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin-left: 20px;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+  .dropdown-content {
+    right: auto; /* Adjust dropdown positioning */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
