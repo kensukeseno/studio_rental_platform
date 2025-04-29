@@ -16,7 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
   let email = localStorage.getItem("userEmail");
   function loadListings() {
     // Get owner's listing from backend
-    fetch(`http://localhost:3000/listing/myListings?email=${email}`)
+    fetch(
+      `https://studio-rental-platform.onrender.com/listing/myListings?email=${email}`
+    )
       .then(async (res) => {
         if (!res.ok) {
           // If error comes from the backend, log the message in the console
@@ -196,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         let loggedInUser;
         let email = localStorage.getItem("userEmail");
-        fetch(`http://localhost:3000/user?email=${email}`)
+        fetch(`https://studio-rental-platform.onrender.com/user?email=${email}`)
           .then(async (res) => {
             if (!res.ok) {
               // If error comes from the backend, log the message in the console
@@ -227,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
               price: document.getElementById("studio-price").value,
               photo: photos,
             };
-            fetch("http://localhost:3000/listing/", {
+            fetch("https://studio-rental-platform.onrender.com/listing/", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(newListing),
@@ -367,11 +369,17 @@ document.addEventListener("DOMContentLoaded", function () {
       .getElementById("list-save-change-btn")
       .addEventListener("click", async function (event) {
         event.preventDefault();
-        fetch("http://localhost:3000/listing/delete-listing-photos", {
-          method: "DELETE",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ id: listing.id, photoIds: deletingPhotoIds }),
-        })
+        fetch(
+          "https://studio-rental-platform.onrender.com/listing/delete-listing-photos",
+          {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              id: listing.id,
+              photoIds: deletingPhotoIds,
+            }),
+          }
+        )
           .then(async (res) => {
             if (!res.ok) {
               // If error comes from the backend, log the message in the console
@@ -444,11 +452,14 @@ document.addEventListener("DOMContentLoaded", function () {
               photo: newlyUploadingPhotos,
               id: listing.id,
             };
-            fetch("http://localhost:3000/listing/update-listing", {
-              method: "PUT",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(updatedListing),
-            })
+            fetch(
+              "https://studio-rental-platform.onrender.com/listing/update-listing",
+              {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(updatedListing),
+              }
+            )
               .then(async (res) => {
                 if (!res.ok) {
                   // If error comes from the backend, log the message in the console
@@ -479,11 +490,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Delete Listing
   window.deleteListing = function (id) {
-    fetch("http://localhost:3000/listing/delete-listing", {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: id }),
-    })
+    fetch(
+      "https://studio-rental-platform.onrender.com/listing/delete-listing",
+      {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: id }),
+      }
+    )
       .then(async (res) => {
         if (!res.ok) {
           // If error comes from the backend, log the message in the console

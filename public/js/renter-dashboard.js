@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const studioList = document.getElementById("studio-list");
   const listingDetails = document.getElementById("listing-details");
   let availableListings = [];
-  fetch(`http://localhost:3000/listing/listings`)
+  fetch(`https://studio-rental-platform.onrender.com/listing/listings`)
     .then(async (res) => {
       if (!res.ok) {
         // If error comes from the backend, log the message in the console

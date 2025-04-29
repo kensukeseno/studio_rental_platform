@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Load logged-in user data from backend
   let loggedInUser;
   let email = localStorage.getItem("userEmail");
-  fetch(`http://localhost:3000/user?email=${email}`)
+  fetch(`https://studio-rental-platform.onrender.com/user?email=${email}`)
     .then(async (res) => {
       if (!res.ok) {
         // If error comes from the backend, log the message in the console
@@ -256,7 +256,7 @@ document.addEventListener("DOMContentLoaded", function () {
       loggedInUser.phone = updatedPhone;
       loggedInUser.photo = updatedPhoto;
       // Call a API to update user info
-      fetch("http://localhost:3000/user/update-profile", {
+      fetch("https://studio-rental-platform.onrender.com/user/update-profile", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

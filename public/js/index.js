@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
         photo: photo,
       };
       // Send a POST request to the backend
-      fetch("http://localhost:3000/user/signup", {
+      fetch("https://studio-rental-platform.onrender.com/user/signup", {
         method: "POST", // Set the request method to POST
         headers: {
           "Content-Type": "application/json", // Indicate the content type is JSON
@@ -155,7 +155,9 @@ document.addEventListener("DOMContentLoaded", function () {
       loginErrorMessage.textContent = "";
 
       // Send a GET request to the backend
-      fetch(`http://localhost:3000/user/login?email=${email}`)
+      fetch(
+        `https://studio-rental-platform.onrender.com/user/login?email=${email}`
+      )
         .then(async (res) => {
           if (!res.ok) {
             // If error comes from the backend, log the message in the console
