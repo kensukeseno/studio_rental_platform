@@ -101,9 +101,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
                 <h4>${listing.name}</h4>
                 <p class="studio-address">${listing.address}</p>
-                <button class="inquire-btn" onclick="showListingDetails(${
+                <button class="inquire-btn" onclick="showListingDetails('${
                   listing.id
-                })">Inquire</button>
+                }')">Inquire</button>
             `;
       studioList.appendChild(listingElement);
     });
