@@ -141,15 +141,6 @@ img {
 
 #profile-info img {
   width: 120px;
-  border-radius: 50%;
-}
-
-#profile-info-container {
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px #0000001a;
-  padding: 20px;
-  margin-bottom: 20px;
 }
 
 /* Responsive Design */
@@ -184,7 +175,6 @@ img {
   background: white;
   padding: 20px;
   border-radius: 10px;
-  width: 80%;
   max-width: 500px;
   position: relative;
   text-align: center;
@@ -215,7 +205,7 @@ img {
   gap: 15px;
 }
 
-.modal-content input,
+.modal-content input:not([type="checkbox"]),
 .modal-content select {
   padding: 10px;
   font-size: 1rem;
@@ -308,4 +298,20 @@ img {
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+/* Temporary message */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
 }

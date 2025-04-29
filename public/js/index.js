@@ -128,7 +128,10 @@ document.addEventListener("DOMContentLoaded", function () {
               throw new Error("Something went wrong.");
             }
           }
-          alert("Sign-up successful! Redirecting to login...");
+          await showTemporaryMessage(
+            "Sign-up successful! Redirecting to login...",
+            2000
+          );
           closeModal(signupModal);
           openModal(loginModal);
         })
@@ -169,6 +172,11 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           }
           const jsonObject = await res.json();
+
+          //Show redirecting message
+          await showTemporaryMessage(
+            "Login successful! Redirecting to dashboard..."
+          );
           // Store user email in the local storage
           localStorage.setItem("userEmail", email);
           if (jsonObject.role === "renter") {
@@ -176,8 +184,6 @@ document.addEventListener("DOMContentLoaded", function () {
           } else if (jsonObject.role === "owner") {
             window.location.href = "/owner-dashboard";
           }
-
-          alert("Login successful! Redirecting to dashboard...");
           closeModal(loginModal);
         })
         .catch((error) => {
@@ -187,4 +193,18 @@ document.addEventListener("DOMContentLoaded", function () {
           return;
         });
     });
+
+  function showTemporaryMessage(message, duration = 2000) {
+    return new Promise((resolve) => {
+      const overlay = document.createElement("div");
+      overlay.id = "overlay";
+      overlay.textContent = message;
+      document.body.appendChild(overlay);
+
+      setTimeout(() => {
+        document.body.removeChild(overlay);
+        resolve();
+      }, duration);
+    });
+  }
 });

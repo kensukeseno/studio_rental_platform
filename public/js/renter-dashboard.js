@@ -66,10 +66,10 @@ document.addEventListener("DOMContentLoaded", function () {
       availableListings = jsonObject;
       loadListings();
     })
-    .catch((error) => {
-      window.location.href = "/";
+    .catch(async (error) => {
+      await showTemporaryMessage("Something went wrong. Please log in again.");
       console.error(error.message);
-      alert("Something went wrong. Please log in again.");
+      window.location.href = "/";
       return;
     });
 
@@ -231,9 +231,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     listingDetails.innerHTML = `
         <h3>${listing.name}</h3>
-        <p><strong>Owner's name:</strong> ${listing.ownerName}</p>
-        <p><strong>Owner's phone:</strong> ${listing.ownerPhone}</p>
-        <p><strong>Owner's email:</strong> ${listing.ownerEmail}</p>
         <p><strong>Address:</strong> ${listing.address}</p>
         <p><strong>Area:</strong> ${listing.area} m²</p>
         <p><strong>Type:</strong> ${listing.type}</p>
@@ -245,6 +242,10 @@ document.addEventListener("DOMContentLoaded", function () {
         <p><strong>Rental Term:</strong> ${listing.rentalTerm}</p>
         <p><strong>Price:</strong> $${listing.price} per term</p>
         <div id="listing-photo">${listingPhotoSection.innerHTML}</div>
+        <div><strong>Book Through Owner!</strong></div>
+        <p><strong>Owner's name:</strong> ${listing.ownerName}</p>
+        <p><strong>Owner's phone:</strong> ${listing.ownerPhone}</p>
+        <p><strong>Owner's email:</strong> ${listing.ownerEmail}</p>
     `;
 
     openModal(listingModal);
@@ -269,6 +270,20 @@ document.addEventListener("DOMContentLoaded", function () {
   if (searchInput) {
     searchInput.addEventListener("input", function () {
       searchListings();
+    });
+  }
+
+  function showTemporaryMessage(message, duration = 2000) {
+    return new Promise((resolve) => {
+      const overlay = document.createElement("div");
+      overlay.id = "overlay";
+      overlay.textContent = message;
+      document.body.appendChild(overlay);
+
+      setTimeout(() => {
+        document.body.removeChild(overlay);
+        resolve();
+      }, duration);
     });
   }
 });

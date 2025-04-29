@@ -120,6 +120,30 @@
   background-color: #357ab8;
 }
 
+/* Listing detail */
+#listing-details > p {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#listing-photo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 5px;
+  justify-content: center;
+}
+
+#listing-photo img {
+  transition: transform 0.3s ease;
+}
+
+#listing-photo img:hover {
+  transform: scale(2);
+}
+
 /*  Apply Filter Modal - Compact & Cramped */
 #filter-modal .modal-content {
   width: 50%;

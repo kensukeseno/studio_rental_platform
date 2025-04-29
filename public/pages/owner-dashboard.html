@@ -70,7 +70,7 @@
         <form id="listing-form">
             <input type="text" id="studio-name" placeholder="Studio Name" required>
             <input type="text" id="studio-address" placeholder="Address" required>
-            <input type="number" id="studio-area" placeholder="Area (m²)" min="0" required>
+            <input type="number" id="studio-area" placeholder="Area(m²)" min="0" required>
             <input type="number" id="studio-capacity" placeholder="Capacity" min="0" required>
             <select name="type" id="studio-type" required>
                 <option value="" disabled selected hidden>Select a Studio Type</option>
@@ -79,11 +79,6 @@
                 <option value="dance-studio">Dance studio</option>
                 <option value="rehearsal-space">Rehearsal space</option>
             </select>
-            <div>
-                <p>Parking Available: <input type="checkbox" id="studio-parking"></p>
-                <p>Public Transport Nearby: <input type="checkbox" id="studio-public-transport"></p>
-                <p>Available for Rent: <input type="checkbox" id="studio-available"></p>
-            </div>
             <select name="term" id="studio-rental-term" required>
                 <option value="" disabled selected hidden>Select a Rental Term</option>
                 <option value="hourly">Hourly</option>
@@ -91,7 +86,12 @@
                 <option value="weekly">Weekly</option>
                 <option value="monthly">Monthly</option>
             </select>
-            <input type="number" id="studio-price" placeholder="Price per Term ($)" min="0" required>
+            <input type="number" id="studio-price" placeholder="Price/Term($)" min="0" required>
+            <div>
+                <label>Parking Available: <input type="checkbox" id="studio-parking"></label><br>
+                <label>Public Transport Nearby: <input type="checkbox" id="studio-public-transport"></label><br>
+                <label>Available for Rent: <input type="checkbox" id="studio-available"></label><br>
+            </div>
             <p>Upload up to 4 photos: <input type="file" id="studio-photo" multiple></p>
             <button id="add-listing-btn" type="submit">Add Listing</button>
         </form>

@@ -27,11 +27,12 @@ document.addEventListener("DOMContentLoaded", function () {
       displayUserInfo(loggedInUser);
       console.log("User loaded successfully:", loggedInUser.email);
     })
-    .catch((error) => {
-      window.location.href = "/";
+    .catch(async (error) => {
       const errorMessage = error.message;
       console.log(errorMessage);
-      alert("Something went wrong. Please log in again.");
+      await showTemporaryMessage("Something went wrong. Please log in again.");
+      window.location.href = "/";
+
       return;
     });
 
@@ -297,9 +298,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       profileInfoSection.innerHTML = `
         <div>
-          <p><strong>Name:</strong> ${user.name}</p>
-          <p><strong>Email:</strong> ${user.email}</p>
-          <p><strong>Phone:</strong> ${user.phone || "Not provided"}</p>
+          <p><strong>Name:</strong><br> ${user.name}</p>
+          <p><strong>Email:</strong><br> ${user.email}</p>
+          <p><strong>Phone:</strong><br> ${user.phone || "Not provided"}</p>
         </div>
         <img src="${photo}" alt="Profile Photo" onerror="this.src='../images/user-profile-default-image.png'; console.log('Error loading profile image, fallback to default');">
       `;
@@ -318,4 +319,18 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+  function showTemporaryMessage(message, duration = 2000) {
+    return new Promise((resolve) => {
+      const overlay = document.createElement("div");
+      overlay.id = "overlay";
+      overlay.textContent = message;
+      document.body.appendChild(overlay);
+
+      setTimeout(() => {
+        document.body.removeChild(overlay);
+        resolve();
+      }, duration);
+    });
+  }
 });

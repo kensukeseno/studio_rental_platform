@@ -9,6 +9,7 @@ body {
   text-align: center;
   overflow: hidden;
   position: relative;
+  margin: 0px;
 }
 
 /* Background Wrapper */
@@ -284,4 +285,20 @@ section .air.air4 {
   .modal-content {
     max-width: 320px;
   }
+}
+
+/* Temporary message */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
 }

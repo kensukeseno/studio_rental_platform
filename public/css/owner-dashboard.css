@@ -1,15 +1,4 @@
 /* Forms */
-#add-listing-form {
-  width: 48%;
-}
-
-@media (max-width: 1000px) {
-  #profile,
-  #add-listing-form {
-    width: 100%;
-  }
-}
-
 #listing-form {
   background-color: white;
   border-radius: 10px;
@@ -21,7 +10,7 @@
   justify-content: space-between;
 }
 
-#listing-form input,
+#listing-form > input,
 #listing-form select {
   width: 48%;
   padding: 12px;
@@ -29,6 +18,15 @@
   border: 1px solid #ddd;
   border-radius: 5px;
   outline: none;
+}
+
+#listing-form > div {
+  width: 48%;
+}
+
+#listing-form select,
+#listing-form > div {
+  min-width: 300px;
 }
 
 /* Edit Listing Form */
@@ -42,6 +40,10 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+#edit-listing-form > div > div {
+  width: 100%;
 }
 
 #edit-studio-photo div {

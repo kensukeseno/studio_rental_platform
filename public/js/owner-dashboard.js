@@ -57,10 +57,12 @@ document.addEventListener("DOMContentLoaded", function () {
           studioListings.appendChild(card);
         });
       })
-      .catch((error) => {
-        window.location.href = "/";
+      .catch(async (error) => {
         console.error(error.message);
-        alert("Something went wrong. Please log in again.");
+        await showTemporaryMessage(
+          "Something went wrong. Please log in again."
+        );
+        window.location.href = "/";
         return;
       });
   }
@@ -253,10 +255,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
               });
           })
-          .catch((error) => {
-            window.location.href = "/";
-            alert("Something went wrong. Please log in again.");
+          .catch(async (error) => {
             console.error(error.message);
+            await showTemporaryMessage(
+              "Something went wrong. Please log in again."
+            );
+            window.location.href = "/";
             return;
           });
       });
@@ -549,4 +553,18 @@ document.addEventListener("DOMContentLoaded", function () {
       profileModal.style.display = "none";
     }
   });
+
+  function showTemporaryMessage(message, duration = 2000) {
+    return new Promise((resolve) => {
+      const overlay = document.createElement("div");
+      overlay.id = "overlay";
+      overlay.textContent = message;
+      document.body.appendChild(overlay);
+
+      setTimeout(() => {
+        document.body.removeChild(overlay);
+        resolve();
+      }, duration);
+    });
+  }
 });
