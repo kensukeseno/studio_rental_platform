@@ -146,8 +146,6 @@
 
 /*  Apply Filter Modal - Compact & Cramped */
 #filter-modal .modal-content {
-  width: 50%;
-  max-width: 500px;
   padding: 15px;
   display: flex;
   flex-direction: column;
